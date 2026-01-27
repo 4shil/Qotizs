@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowLeft, Heart, Bookmark, Trash2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import QuoteCard from '@/components/QuoteCard';
 
 interface Quote {
@@ -16,13 +17,28 @@ export default function SavedPage() {
   const [likedQuotes, setLikedQuotes] = useState<Set<string>>(new Set());
   const [bookmarkedQuotes, setBookmarkedQuotes] = useState<Set<string>>(new Set());
   const [activeTab, setActiveTab] = useState<'liked' | 'bookmarked'>('bookmarked');
+  const [mounted, setMounted] = useState(false);
 
+  // Load saved quotes on mount
   useEffect(() => {
+    setMounted(true);
     const savedLikes = localStorage.getItem('likedQuotes');
     const savedBookmarks = localStorage.getItem('bookmarkedQuotes');
     
-    if (savedLikes) setLikedQuotes(new Set(JSON.parse(savedLikes)));
-    if (savedBookmarks) setBookmarkedQuotes(new Set(JSON.parse(savedBookmarks)));
+    if (savedLikes) {
+      try {
+        setLikedQuotes(new Set(JSON.parse(savedLikes)));
+      } catch (e) {
+        console.error('Error parsing liked quotes:', e);
+      }
+    }
+    if (savedBookmarks) {
+      try {
+        setBookmarkedQuotes(new Set(JSON.parse(savedBookmarks)));
+      } catch (e) {
+        console.error('Error parsing bookmarked quotes:', e);
+      }
+    }
   }, []);
 
   const handleLikeToggle = (quoteText: string) => {
@@ -48,6 +64,12 @@ export default function SavedPage() {
   };
 
   const handleClearAll = () => {
+    const confirmClear = window.confirm(
+      `Are you sure you want to clear all ${activeTab} quotes? This cannot be undone.`
+    );
+    
+    if (!confirmClear) return;
+    
     if (activeTab === 'liked') {
       setLikedQuotes(new Set());
       localStorage.setItem('likedQuotes', JSON.stringify([]));
@@ -59,27 +81,32 @@ export default function SavedPage() {
 
   const quotesToShow = activeTab === 'liked' ? Array.from(likedQuotes) : Array.from(bookmarkedQuotes);
 
+  // Prevent hydration mismatch
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="bg-white border-b-3 border-[rgb(30,30,40)] py-6 px-4">
+      <header className="bg-white border-b-3 border-[rgb(30,30,40)] py-6 px-4 sticky top-0 z-40">
         <div className="max-w-6xl mx-auto">
-          <button
-            onClick={() => router.push('/')}
+          <Link
+            href="/"
             className="btn-outline inline-flex items-center gap-2 mb-4"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Home
-          </button>
+          </Link>
           
-          <h1 className="text-4xl font-bold text-foreground mb-2">Your Collection</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">Your Collection</h1>
           <p className="text-foreground/60 font-medium">Your favorite quotes in one place</p>
         </div>
       </header>
 
       {/* Tabs */}
-      <section className="bg-white border-b-3 border-[rgb(30,30,40)] py-4 px-4">
-        <div className="max-w-6xl mx-auto flex gap-3">
+      <section className="bg-white border-b-3 border-[rgb(30,30,40)] py-4 px-4 sticky top-[140px] md:top-[156px] z-30">
+        <div className="max-w-6xl mx-auto flex gap-3 flex-wrap">
           <button
             onClick={() => setActiveTab('bookmarked')}
             className={`badge-soft-brutalism ${
@@ -106,7 +133,7 @@ export default function SavedPage() {
           {quotesToShow.length > 0 && (
             <button
               onClick={handleClearAll}
-              className="badge-soft-brutalism bg-white hover:bg-red-50 ml-auto text-red-600"
+              className="badge-soft-brutalism bg-white hover:bg-red-50 ml-auto text-red-600 border-red-500"
             >
               <Trash2 className="w-4 h-4 inline mr-2" />
               Clear All
@@ -129,7 +156,7 @@ export default function SavedPage() {
                 
                 return (
                   <QuoteCard
-                    key={index}
+                    key={`${quoteText.slice(0, 20)}-${index}`}
                     quote={quote}
                     isLiked={likedQuotes.has(quoteText)}
                     isBookmarked={bookmarkedQuotes.has(quoteText)}
@@ -155,12 +182,12 @@ export default function SavedPage() {
                 <p className="text-foreground/70 mb-6">
                   Start exploring and {activeTab === 'liked' ? 'like' : 'bookmark'} your favorite quotes!
                 </p>
-                <button
-                  onClick={() => router.push('/')}
-                  className="btn-primary"
+                <Link
+                  href="/"
+                  className="btn-primary inline-block"
                 >
                   Discover Quotes
-                </button>
+                </Link>
               </div>
             </div>
           )}
