@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Soft Neo Brutalism Color Palette */
+    --background: 250 250 252;
+    --foreground: 20 20 30;
+    
+    --primary: 255 107 107;       /* Soft Coral */
+    --primary-light: 255 200 200;
+    --primary-dark: 235 80 80;
+    
+    --secondary: 255 230 109;     /* Soft Yellow */
+    --secondary-light: 255 245 200;
+    --secondary-dark: 240 210 80;
+    
+    --accent: 135 206 250;        /* Soft Sky Blue */
+    --accent-light: 200 230 255;
+    --accent-dark: 100 180 230;
+    
+    --success: 144 238 144;       /* Soft Green */
+    --purple: 216 191 216;        /* Soft Lavender */
+    --peach: 255 218 185;         /* Soft Peach */
+    
+    --border: 30 30 40;
+    --card-bg: 255 255 255;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-[rgb(30,30,40)];
+  }
+  
+  body {
+    @apply bg-[rgb(250,250,252)] text-[rgb(20,20,30)] font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Soft Neo Brutalism Button */
+  .btn-soft-brutalism {
+    @apply px-6 py-3 font-bold border-3 border-[rgb(30,30,40)]
+           transition-all duration-200 hover:translate-x-0.5 hover:translate-y-0.5
+           active:translate-x-1 active:translate-y-1;
+    box-shadow: 4px 4px 0px rgba(30, 30, 40, 1);
+  }
+  
+  .btn-soft-brutalism:hover {
+    box-shadow: 2px 2px 0px rgba(30, 30, 40, 1);
+  }
+  
+  .btn-soft-brutalism:active {
+    box-shadow: 0px 0px 0px rgba(30, 30, 40, 1);
+  }
+  
+  .btn-primary {
+    @apply btn-soft-brutalism bg-[rgb(255,107,107)] hover:bg-[rgb(235,80,80)] text-white;
+  }
+  
+  .btn-secondary {
+    @apply btn-soft-brutalism bg-[rgb(255,230,109)] hover:bg-[rgb(240,210,80)] text-[rgb(20,20,30)];
+  }
+  
+  .btn-accent {
+    @apply btn-soft-brutalism bg-[rgb(135,206,250)] hover:bg-[rgb(100,180,230)] text-white;
+  }
+  
+  .btn-outline {
+    @apply btn-soft-brutalism bg-white hover:bg-[rgb(250,250,252)];
+  }
+
+  /* Soft Neo Brutalism Card */
+  .card-soft-brutalism {
+    @apply border-3 border-[rgb(30,30,40)] p-6 bg-white transition-all duration-200 rounded-lg;
+    box-shadow: 6px 6px 0px rgba(30, 30, 40, 1);
+  }
+  
+  .card-soft-brutalism:hover {
+    @apply translate-x-0.5 translate-y-0.5;
+    box-shadow: 3px 3px 0px rgba(30, 30, 40, 1);
+  }
+
+  /* Soft Neo Brutalism Input */
+  .input-soft-brutalism {
+    @apply px-4 py-3 border-3 border-[rgb(30,30,40)] font-medium rounded-lg
+           focus:outline-none focus:ring-0 focus:translate-x-0.5 focus:translate-y-0.5
+           transition-all duration-200 bg-white;
+    box-shadow: 3px 3px 0px rgba(30, 30, 40, 1);
+  }
+  
+  .input-soft-brutalism:focus {
+    box-shadow: 1px 1px 0px rgba(30, 30, 40, 1);
+  }
+
+  /* Category Badge */
+  .badge-soft-brutalism {
+    @apply inline-block px-3 py-1.5 border-2 border-[rgb(30,30,40)] font-bold text-sm
+           rounded-full transition-all duration-200;
+  }
+  
+  .badge-soft-brutalism:hover {
+    @apply translate-x-0.5 translate-y-0.5;
+  }
+}
+
+/* Custom Scrollbar - Soft Style */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(250, 250, 252);
+  border-left: 2px solid rgb(30, 30, 40);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(135, 206, 250);
+  border: 2px solid rgb(30, 30, 40);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(100, 180, 230);
+}
+
+/* Selection */
+::selection {
+  background: rgb(255, 230, 109);
+  color: rgb(20, 20, 30);
+}
