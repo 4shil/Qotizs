@@ -1,16 +1,16 @@
-# Qotizs 💬✨
+# Qotizs
 
 A beautiful, modern quote discovery app built with Next.js and the Soft Neo Brutalism design style.
 
 ## Features
 
-- 🎨 Beautiful soft neo-brutalism design
-- 💖 Like and bookmark your favorite quotes
-- 🔍 Search quotes by text, author, or category
-- 📱 Fully responsive (mobile-first)
-- 🎯 Random quote generator
-- 🔄 Share quotes on social media
-- 💾 Persistent favorites (localStorage)
+- Beautiful soft neo-brutalism design
+- Like and bookmark your favorite quotes
+- Search quotes by text, author, or category
+- Fully responsive (mobile-first)
+- Random quote generator
+- Share quotes on social media
+- Persistent favorites (localStorage)
 
 ## Tech Stack
 
@@ -24,8 +24,8 @@ A beautiful, modern quote discovery app built with Next.js and the Soft Neo Brut
 
 1. Clone the repo:
 ```bash
-git clone https://github.com/4shil/quotes-app.git
-cd quotes-app
+git clone https://github.com/4shil/qotizs.git
+cd qotizs
 ```
 
 2. Install dependencies:
