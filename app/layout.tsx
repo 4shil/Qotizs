@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "QuoteVerse",
+  title: "Qotizs",
   description: "Discover inspiring quotes, save your favorites, and share wisdom.",
   icons: {
     icon: [

@@ -22,7 +22,7 @@ export default function Navbar({ likedCount, bookmarkedCount }: NavbarProps) {
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <h1 className="text-xl md:text-2xl font-bold text-foreground">
-              Quote<span className="text-primary">Verse</span>
+              Qotizs
             </h1>
           </Link>
 

@@ -1,4 +1,4 @@
-# QuoteVerse 💬✨
+# Qotizs 💬✨
 
 A beautiful, modern quote discovery app built with Next.js and the Soft Neo Brutalism design style.
 
@@ -18,7 +18,7 @@ A beautiful, modern quote discovery app built with Next.js and the Soft Neo Brut
 - **Styling:** Tailwind CSS
 - **Icons:** Lucide React
 - **API:** API Ninjas Quotes API
-- **Deployment:** Netlify
+- **Deployment:** Vercel
 
 ## Getting Started
 
@@ -56,11 +56,7 @@ npm start
 
 ## Deployment
 
-Deploy to Netlify in one click:
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/4shil/quotes-app)
-
-Don't forget to add your `NEXT_PUBLIC_API_NINJAS_KEY` environment variable!
+Deployed on Vercel at [qotizs.vercel.app](https://qotizs.vercel.app)
 
 ## License
 
