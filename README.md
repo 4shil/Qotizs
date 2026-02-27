@@ -1,62 +1,73 @@
 # Qotizs
 
-A beautiful, modern quote discovery app built with Next.js and the Soft Neo Brutalism design style.
+A quote discovery app. Browse, search, like, and save quotes from a public API. Built with Next.js using a Soft Neo-Brutalist design.
+
+![quote app interface](https://media.giphy.com/media/l0HlKrB02QY0f1mbm/giphy.gif)
+
+[Live Demo](https://qotizs.vercel.app)
 
 ## Features
 
-- Beautiful soft neo-brutalism design
-- Like and bookmark your favorite quotes
-- Search quotes by text, author, or category
-- Fully responsive (mobile-first)
+- Browse quotes by category or author
+- Search by text, author, or tag
 - Random quote generator
-- Share quotes on social media
-- Persistent favorites (localStorage)
+- Like and bookmark favorites (stored in localStorage)
+- Responsive, mobile-first layout
+- Share quotes
 
-## Tech Stack
+## Stack
 
-- **Framework:** Next.js 15 (React 19)
-- **Styling:** Tailwind CSS
-- **Icons:** Lucide React
-- **API:** API Ninjas Quotes API
-- **Deployment:** Vercel
+- Next.js 15 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS
+- Lucide React
+- [API Ninjas Quotes API](https://api-ninjas.com/api/quotes)
 
 ## Getting Started
 
-1. Clone the repo:
 ```bash
-git clone https://github.com/4shil/qotizs.git
-cd qotizs
-```
-
-2. Install dependencies:
-```bash
+git clone https://github.com/4shil/Qotizs.git
+cd Qotizs
 npm install
 ```
 
-3. Create `.env.local` and add your API key:
-```env
+Create `.env.local`:
+
+```
 NEXT_PUBLIC_API_NINJAS_KEY=your_api_key_here
 ```
 
-Get your free API key at [api-ninjas.com](https://api-ninjas.com)
+Get a free API key at [api-ninjas.com](https://api-ninjas.com).
 
-4. Run the development server:
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+Open [http://localhost:3000](http://localhost:3000).
 
-## Build for Production
+## Project Structure
+
+```
+Qotizs/
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx            # Main feed
+│   └── saved/              # Saved quotes page
+└── components/
+    ├── Navbar.tsx
+    ├── QuoteCard.tsx        # Individual quote with like/save actions
+    └── StatsSection.tsx
+```
+
+## Deployment
+
+Deployed on Vercel. Any static/SSR host works:
 
 ```bash
 npm run build
 npm start
 ```
-
-## Deployment
-
-Deployed on Vercel at [qotizs.vercel.app](https://qotizs.vercel.app)
 
 ## License
 
